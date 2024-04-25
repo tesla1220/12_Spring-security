@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ohgiraffers.sessionsecurity.user.model.dao.UserMapper">
+    <!-- namespace : 이 매퍼 파일이 사용할 자바 인터페이스의 네임스페이스를 지정
+      이 경우, 이 xml 파일과 상호작용하고 있는 클래스는 UserMapper 인터페이스 -->
+
+    <insert id="regist" parameterType="com.ohgiraffers.sessionsecurity.user.model.dto.SignupDTO">
+        <!-- parameterType : 이 INSERT 쿼리에 전달되는 매개변수의 자료형을 지정
+        여기서는 SignupDTO 클래스를 사용 -->
+
+        INSERT INTO TBL_USER
+        (
+            USER_ID,
+            USER_NAME,
+            PASSWORD,
+            USER_ROLE
+        )
+        VALUES
+        (
+            #{userId},
+            #{userName},
+            #{userPass},
+            #{role}
+        )
+    </insert>
+
+    <resultMap id="login" type="com.ohgiraffers.sessionsecurity.user.model.dto.LoginUserDTO">
+        <id property="userCode" column="USER_NO"/>
+        <result property="userId" column="USER_ID"/>
+        <result property="userName" column="USER_NAME"/>
+        <result property="password" column="PASSWORD"/>
+        <result property="userRole" column="USER_ROLE"/>
+    </resultMap>
+
+    <select id="findByUsername" resultMap="login">
+        SELECT
+            USER_NO,
+            USER_ID,
+            USER_NAME,
+            PASSWORD,
+            USER_ROLE
+        FROM
+            TBL_USER
+        WHERE
+            USER_ID = #{ username }
+    </select>
+
+</mapper>
