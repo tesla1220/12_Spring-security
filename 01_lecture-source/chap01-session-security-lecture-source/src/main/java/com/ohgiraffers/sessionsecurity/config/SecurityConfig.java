@@ -42,7 +42,8 @@ public class SecurityConfig {        // 보안에 관련된 Config class
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return web -> web.ignoring()
-                .requestMatchers(PathRequest.toStaticResources().atCommonLocations());  // Security에 정적인 리소스는 건들지 않겠다!
+                .requestMatchers(PathRequest.toStaticResources().atCommonLocations());
+        // Security에 정적인 리소스는 건들지 않겠다!
     }
 
     @Bean

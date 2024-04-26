@@ -28,7 +28,7 @@ public class AuthFailHandler extends SimpleUrlAuthenticationFailureHandler {
     /**
     * @param request 사용자 요청 개체
     * @param response 서버 응답값
-    * @Param exception 발생한 오류를 담는 개체 */
+    * @param exception 발생한 오류를 담는 개체 */
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
@@ -59,8 +59,11 @@ public class AuthFailHandler extends SimpleUrlAuthenticationFailureHandler {
        errorMessage = URLEncoder.encode(errorMessage, "UTF-8");
 
        /* 오류를 처리할 페이지로 이동시킨다. URL 요청은 서블릿(페이지)가 있어야 함 */
-       setDefaultFailureUrl("/auth/fail?message=" + errorMessage);      // ?message 라고 하는 키에 + 위에 만들어준 errorMessage 인코딩을 넣어줌
+       setDefaultFailureUrl("/auth/fail?message=" + errorMessage);
+       // ?message 라고 하는 키에 + 위에 만들어준 errorMessage 인코딩을 넣어줌
 
         super.onAuthenticationFailure(request, response, exception);
+        // 현재 클래스가 상속한 부모 클래스의 onAuthenticationFailure 메서드를 호출하여
+        // 사용자의 인증 실패에 대한 처리를 부모 클래스에 위임하는 것을 의미합니다
     }
 }

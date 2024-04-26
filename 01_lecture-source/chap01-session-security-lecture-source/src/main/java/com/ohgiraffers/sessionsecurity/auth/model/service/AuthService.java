@@ -26,7 +26,8 @@ public class AuthService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // loadUserByUsername : 사용자의 ID를 지칭. 매개변수로 사용 중인 username 과 다르다
 
-        LoginUserDTO login = userService.findByUsername(username);       // 매개변수 username 으로 LoginUserDTO에 있는 값 찾으러 감
+        LoginUserDTO login = userService.findByUsername(username);
+        // 매개변수 username 으로 LoginUserDTO에 있는 값 찾으러 감
 
 
         if(Objects.isNull(login)) {         // = login 이란 객체가 없다면

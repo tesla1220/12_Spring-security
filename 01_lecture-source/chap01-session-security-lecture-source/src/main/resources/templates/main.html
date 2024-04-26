@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,6 +7,12 @@
 <body>
     <h1 style="text-align: center; color: burlywood">Spring Security Login</h1>
     <hr>
+    <div sec:authorize="hasAnyAuthority('ADMIN')">
+        <h1>관리자 전용 구역</h1>
+    </div>
+    <div sec:authorize="hasAnyAuthority('USER')">
+         <h1>사용자 전용 구역</h1>
+    </div>
     <div>
         <h1>Login</h1>
         <a href="auth/login">로그인</a>

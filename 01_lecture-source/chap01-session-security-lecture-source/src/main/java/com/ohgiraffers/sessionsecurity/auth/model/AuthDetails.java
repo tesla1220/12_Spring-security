@@ -31,12 +31,21 @@ public class AuthDetails implements UserDetails {
     *   다중 권한 처리 가능함  */
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        // getAuthorities() 메서드를 선언하고 있습니다.
+        // 이 메서드는 사용자의 권한을 반환하는 데 사용됩니다.
+        // 반환 타입은 Collection<? extends GrantedAuthority>으로,
+        // GrantedAuthority 의 하위 타입을 포함하는 컬렉션을 반환합니다.
 
         Collection<GrantedAuthority> authorities = new ArrayList<>();
+        // authorities라는 이름의 ArrayList 객체를 생성합니다. 이 변수는 사용자의 권한을 저장하는 데 사용될 것입니다.
 
-        loginUserDTO.getRole().forEach(role -> authorities.add(() -> role));        // authorities에 add를 통해 권한을 넣어줌
+        loginUserDTO.getRole().forEach(role -> authorities.add(() -> role));
+        // loginUserDTO 객체의 getRole() 메서드를 호출하여 사용자의 역할(Role) 목록을 가져옵니다.
+        // 그런 다음, 이 목록을 반복(forEach)하면서 각 역할을 authorities 리스트에 추가(add())합니다.
+        // 여기서 각 역할은 GrantedAuthority 인터페이스를 구현한 객체로 변환되어 리스트에 추가됩니다.
 
         return authorities;
+        //  이 메서드는 authorities 리스트를 반환합니다. 이 리스트에는 사용자의 권한이 포함되어 있습니다.
 
     }
 

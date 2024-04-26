@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import java.util.Objects;
 
 @Service
-public class UserService {      //  컨트롤러까지는 아직 비밀번호가 암호화 처리 되지 않았음. 실제로 데이터베이스와 접근하는 서비스 계층에서 비밀번호 암호화 처리
+public class UserService {
+    //  컨트롤러까지는 아직 비밀번호가 암호화 처리 되지 않았음.
+    //  실제로 데이터베이스와 접근하는 서비스 계층에서 비밀번호 암호화 처리
 
     @Autowired
     private UserMapper userMapper;          // userMapper (인터페이스)를 사용하기 위해 의존성 주입. 하단에 사용하고 있음
